@@ -1,15 +1,15 @@
 
 <style>
     .show_prview {
-        width: 500px;
+        width: 100%;
         height: 500px;
-        background-color: orange;
+        background-color: rgba(255, 166, 0, 0.247);
         position: relative;
     }
     .show_code {
-        width: 500px;
+        width: 100%;
         height: 500px;
-        background-color: orange;
+        background-color: rgba(255, 166, 0, 0.363);
         margin-top: 20px;
         position: relative;
     }
@@ -46,9 +46,11 @@
                 button.style.backgroundColor = "rgb(250, 154, 60)"
             }
         }
+        button.style.zIndex = 9999
+
+
         showPreview.appendChild(button)
-        showCode.textContent = `${showPreview.textContent.toString()}`
+        showCode.innerText = `${showPreview.innerHTML}`
         console.log(info)
-        console.log(showPreview.innerHTML)
     }
 </script>

@@ -44,7 +44,7 @@ function runPlugin(): void {
 
 
 figma.showUI(__html__)
-figma.ui.resize(500, 700)
+figma.ui.resize(1600, 700)
 
 runPlugin()
 // figma.closePlugin()
