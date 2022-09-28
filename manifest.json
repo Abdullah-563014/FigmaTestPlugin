@@ -2,7 +2,7 @@
   "name": "FigmaTestPlugin",
   "id": "1156628407441630009",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "./output/code.js",
   "ui": "ui.html",
   "editorType": [
     "figma"

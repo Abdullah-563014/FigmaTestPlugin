@@ -2,9 +2,10 @@
   "name": "figma_test_plugin",
   "version": "1.0.0",
   "description": "Figma Test Plugin",
-  "main": "code.js",
+  "main": "./output/code.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json -w"
   },
   "author": "",
   "license": "",
