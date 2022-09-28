@@ -24,20 +24,30 @@ function runPlugin(): void {
         const fills: number = element?.fills ? element.fills : []
         // console.log(`fills:- ${fills} `)
         // console.log(`fills:- ${element?.cornerRadius} `)
+        console.log(cornerRadius)
         console.log(element.type)
         console.log(fills)
         console.log(element)
-    }
-    // console.log(selectedElements)
 
-    figma.showUI(__html__)
-    figma.ui.resize(500, 700)
+        const values = {
+            id, name, type,leftPosition, topPosition, width, height, cornerRadius, opacity, fills
+        }
+
+        figma.ui.postMessage(values)
+    }
+
+    
     
     // figma.closePlugin()
 
 }
 
+
+figma.showUI(__html__)
+figma.ui.resize(500, 700)
+
 runPlugin()
+// figma.closePlugin()
 
 
 figma.ui.onmessage = message => {

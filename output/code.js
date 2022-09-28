@@ -23,16 +23,21 @@ function runPlugin() {
         const fills = (element === null || element === void 0 ? void 0 : element.fills) ? element.fills : [];
         // console.log(`fills:- ${fills} `)
         // console.log(`fills:- ${element?.cornerRadius} `)
+        console.log(cornerRadius);
         console.log(element.type);
         console.log(fills);
         console.log(element);
+        const values = {
+            id, name, type, leftPosition, topPosition, width, height, cornerRadius, opacity, fills
+        };
+        figma.ui.postMessage(values);
     }
-    // console.log(selectedElements)
-    figma.showUI(__html__);
-    figma.ui.resize(500, 700);
     // figma.closePlugin()
 }
+figma.showUI(__html__);
+figma.ui.resize(500, 700);
 runPlugin();
+// figma.closePlugin()
 figma.ui.onmessage = message => {
     console.log(message);
 };

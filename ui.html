@@ -1,1 +1,54 @@
+
+<style>
+    .show_prview {
+        width: 500px;
+        height: 500px;
+        background-color: orange;
+        position: relative;
+    }
+    .show_code {
+        width: 500px;
+        height: 500px;
+        background-color: orange;
+        margin-top: 20px;
+        position: relative;
+    }
+</style>
+
+
 <h1>hello from ui</h1>
+<div class="show_prview"></div>
+<div class="show_code"></div>
+
+<script>
+    const showPreview = document.querySelector(".show_prview")
+    const showCode = document.querySelector(".show_code")
+    let elementInfo = null
+    onmessage = (event) => {
+       elementInfo = event.data.pluginMessage
+       generateElement(elementInfo)
+    }
+
+    function generateElement(info) {
+        const button = document.createElement("button")
+        button.style.width = info?.width ? `${info.width}px` : "auto"
+        button.style.height = info?.height ? `${info.height}px` : "auto"
+        button.style.borderRadius = info?.cornerRadius ? `${info.cornerRadius}px` : "0px"
+        button.style.position = "absolute"
+        button.style.left = info?.leftPosition ? `${info.leftPosition}px` : "0px"
+        button.style.top = info?.topPosition ? `${info.topPosition}px` : "0px"
+        button.style.opacity = info?.opacity ? info.opacity : 1
+
+        if (info?.fills && Object.keys(info.fills).length) {
+            if (info.fills[0].type === "SOLID") {
+                button.style.backgroundColor = `rgb(${info.fills[0].color.r * 255}, ${info.fills[0].color.g * 255}, ${info.fills[0].color.b * 255})`
+            } else {
+                button.style.backgroundColor = "rgb(250, 154, 60)"
+            }
+        }
+        showPreview.appendChild(button)
+        showCode.textContent = `${showPreview.textContent.toString()}`
+        console.log(info)
+        console.log(showPreview.innerHTML)
+    }
+</script>
